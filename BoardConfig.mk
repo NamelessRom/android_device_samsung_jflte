@@ -121,35 +121,3 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 
 # exFat
 COMMON_GLOBAL_CFLAGS += -DEXFAT_KMOD
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-        device/samsung/jflte/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	property_contexts \
-	te_macros \
-	bluetooth_loader.te \
-	bridge.te \
-	camera.te \
-	conn_init.te \
-	device.te \
-	dhcp.te \
-	domain.te \
-	drmserver.te \
-	file.te \
-	init.te \
-	kickstart.te \
-	mediaserver.te \
-	netmgrd.te \
-	qmux.te \
-	rild.te \
-	rmt.te \
-	sensors.te \
-	surfaceflinger.te \
-	system.te \
-	tee.te \
-	thermald.te \
-	ueventd.te \
-	wpa_supplicant.te
