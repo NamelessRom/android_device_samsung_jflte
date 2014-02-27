@@ -32,6 +32,7 @@ on init
     mkdir /persist 0771 system system
 
     mkdir /mnt/shell/emulated 0700 shell shell
+    mkdir /storage 0550 system sdcard_r
     mkdir /storage/emulated 0555 root root
 
     #External storage directories
@@ -62,9 +63,10 @@ on init
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+    setprop qcom.audio.init complete
     setprop qcom.thermal thermal-engine
     exec /system/bin/sh /init.qcom.early_boot.sh ${ro.board.platform}
-
+    exec /system/bin/sh /init.qcom.syspart_fixup.sh ${ro.board.platform} ${ro.serialno}
 
 on boot-pause
     exec system/bin/battery_charging
@@ -648,11 +650,6 @@ on nonencrypted
 
 on property:vold.decrypt=trigger_restart_framework
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
 
 # Limit to SoC reset (1) and independent SSR (3)
 on property:persist.sys.ssr.restart_level=1
