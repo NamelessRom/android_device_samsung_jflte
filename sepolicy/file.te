@@ -1,3 +1,4 @@
+type mpdecision_socket, file_type;
 type qmuxd_socket, file_type;
 type sensors_socket, file_type;
 type camera_socket, file_type;

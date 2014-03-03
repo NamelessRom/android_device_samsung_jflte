@@ -142,6 +142,7 @@ BOARD_SEPOLICY_UNION += \
 	init.te \
 	kickstart.te \
 	mediaserver.te \
+	mpdecision.te \
 	netmgrd.te \
 	qmux.te \
 	rild.te \
