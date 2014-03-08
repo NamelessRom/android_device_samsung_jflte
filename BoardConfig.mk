@@ -84,7 +84,7 @@ COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 BOARD_NFC_HAL_SUFFIX := msm8960
 
 # Disable initlogo, Samsungs framebuffer is weird
-TARGET_NO_INITLOGO := true
+TARGET_NO_INITLOGO := false
 
 # Use seperate speakerphone device
 BOARD_USES_SEPERATED_VOICE_SPEAKER := true
