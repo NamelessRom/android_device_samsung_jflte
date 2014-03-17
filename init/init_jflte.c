@@ -78,6 +78,7 @@ void vendor_load_properties()
         property_set("ro.telephony.ril.v3", "newDriverCallU");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "8");
+        property_set("ro.gps.set_privacy", "1");
     } else if (strstr(bootloader, "R970X")) {
         /* jfltecsp */
         property_set("ro.build.fingerprint", "samsung/jfltecsp/jfltecsp:4.2.2/JDQ39/R970XWWUAMFA:user/release-keys");
@@ -89,6 +90,7 @@ void vendor_load_properties()
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "8");
         property_set("telephony.sms.pseudo_multipart", "1");
+        property_set("ro.gps.set_privacy", "1");
     } else if (strstr(bootloader, "L720")) {
         /* jfltespr */
         property_set("ro.build.fingerprint", "samsung/jfltespr/jfltespr:4.2.2/JDQ39/L720VPUAMDL:user/release-keys");
@@ -101,6 +103,7 @@ void vendor_load_properties()
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "8");
         property_set("telephony.sms.pseudo_multipart", "1");
+        property_set("ro.gps.set_privacy", "1");
     } else if (strstr(bootloader, "M919")) {
         /* jfltetmo */
         property_set("ro.build.fingerprint", "samsung/jfltetmo/jfltetmo:4.3/JSS15J/M919UVUEMK2:user/release-keys");
@@ -122,6 +125,7 @@ void vendor_load_properties()
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "8");
         property_set("telephony.sms.pseudo_multipart", "1");
+        property_set("ro.gps.set_privacy", "1");
     } else if (strstr(bootloader, "I545")) {
         /* jfltevzw */
         property_set("ro.build.fingerprint", "Verizon/jfltevzw/jfltevzw:4.3/JSS15J/I545VRUEMK2:user/release-keys");
@@ -134,6 +138,7 @@ void vendor_load_properties()
         property_set("ro.cdma.home.operator.numeric", "311480");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.telephony.default_network", "10");
+        property_set("ro.gps.set_privacy", "1");
         property_set("ro.loki_enabled", "1");
     } else if (strstr(bootloader, "I9505G")) {
         /* jgedlte */
