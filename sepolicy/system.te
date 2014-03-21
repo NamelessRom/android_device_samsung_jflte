@@ -5,15 +5,19 @@ allow system wpa_socket:unix_dgram_socket sendto;
 
 qmux_socket(system)
 
-# PowerManagerService
-unix_socket_connect(system, sensors, sensors)
-allow system sensors_socket:sock_file read;
-allow system sensors:unix_stream_socket sendto;
+# PowerManagerService access to sensors socket
+unix_socket_connect(system_server, sensors, sensors)
+unix_socket_send(system_server, sensors, sensors)
+allow system_server sensors:unix_stream_socket sendto;
+allow system_server sensors_socket:sock_file r_file_perms;
 
-# mpdecision access
-unix_socket_connect(system, mpdecision, mpdecision)
-unix_socket_send(system, mpdecision, mpdecision)
-allow system mpdecision:unix_stream_socket sendto;
-allow system mpdecision_socket:dir search;
+# mpdecision socket access
+unix_socket_connect(system_server, mpdecision, mpdecision)
+unix_socket_send(system_server, mpdecision, mpdecision)
+allow system_server mpdecision:unix_stream_socket sendto;
+allow system_server mpdecision_socket:dir search;
 
-allow system sysfs:file { read open write };
+# Access /dev/mdm
+allow system_server radio_device:chr_file r_file_perms;
+
+allow system_server self:netlink_socket create_socket_perms;
