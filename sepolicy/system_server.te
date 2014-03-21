@@ -1,9 +1,6 @@
-allow system diagnostic_device:chr_file rw_file_perms;
-
-allow system init:unix_dgram_socket sendto;
-allow system wpa_socket:unix_dgram_socket sendto;
-
-qmux_socket(system)
+# Grant access to Qualcomm MSM Interface (QMI) radio sockets to system services
+# (e.g., LocationManager)
+qmux_socket(system_server)
 
 # PowerManagerService access to sensors socket
 unix_socket_connect(system_server, sensors, sensors)
