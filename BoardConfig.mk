@@ -113,6 +113,11 @@ TARGET_NEED_SAMSUNG_MAGIC_ZSL_1508 := true
 TARGET_ADD_ISO_MODE_1600 := true
 TARGET_ADD_ISO_MODE_HJR := true
 
+# Permissions for Step Sensor
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.sensor.stepdetector.xml:system/etc/permissions/android.hardware.sensor.stepdetector.xml \
+    frameworks/native/data/etc/android.hardware.sensor.stepcounter.xml:system/etc/permissions/android.hardware.sensor.stepcounter.xml
+
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jfltetmo,jfltecri,jflteatt,jfltecan,jflteusc,jfltezm
 
