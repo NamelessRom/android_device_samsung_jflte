@@ -249,6 +249,7 @@ on post-fs-data
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
+    rm /data/system/wpa_supplicant
 
     #Create directories for wiper services
     mkdir /data/wpstiles/ 0755 shell
@@ -290,6 +291,11 @@ on post-fs-data
     setprop vold.post_fs_data_done 1
 
     chown root radio /sys/module/rmnet_usb/parameters/dump_ctrl_msg
+
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
 
 # Export GPIO56 for fusion targets to enable/disable hub
 service usbhub_init /system/bin/usbhub_init
@@ -676,3 +682,36 @@ on property:service.bootanim.exit=1
     write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
     # disable pulsing led on boot complete
     write /sys/class/sec/led/led_pattern 0
+
+# CM Performance Profiles
+
+# Powersave
+on property:sys.perf.profile=0
+    start mpdecision
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor conservative
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor conservative
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
+
+# Balanced
+on property:sys.perf.profile=1
+    start mpdecision
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor interactive
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor ondemand
+
+# High performance
+on property:sys.perf.profile=2
+    stop mpdecision
+    write /sys/devices/system/cpu/cpu0/online 1
+    write /sys/devices/system/cpu/cpu1/online 1
+    write /sys/devices/system/cpu/cpu2/online 1
+    write /sys/devices/system/cpu/cpu3/online 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor performance
+    write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor performance
+    write /sys/class/kgsl/kgsl-3d0/pwrscale/trustzone/governor performance

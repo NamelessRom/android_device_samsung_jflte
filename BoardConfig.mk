@@ -27,11 +27,10 @@ TARGET_SPECIFIC_HEADER_PATH := device/samsung/jflte/include
 
 # Kernel
 TARGET_KERNEL_SOURCE         := kernel/samsung/jf
-BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE         := androidboot.hardware=qcom user_debug=31 zcache msm_rtb.filter=0x3F ehci-hcd.park=3 maxcpus=2
 BOARD_KERNEL_BASE            := 0x80200000
 BOARD_MKBOOTIMG_ARGS         := --ramdisk_offset 0x02000000
 BOARD_KERNEL_PAGESIZE        := 2048
-TARGET_KERNEL_CONFIG         := jf_eur_defconfig
 TARGET_KERNEL_VARIANT_CONFIG := custom_jf_defconfig
 TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
@@ -58,7 +57,6 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_RECOVERY_SWIPE := true
 TARGET_RECOVERY_FSTAB := device/samsung/jflte/rootdir/etc/fstab.qcom
-ENABLE_LOKI_RECOVERY := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00A00000
@@ -79,6 +77,10 @@ BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 
 # Needed for blobs
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
+
+# Adreno
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
+HAVE_ADRENO_SOURCE := false
 
 # NFC
 BOARD_NFC_HAL_SUFFIX := msm8960
@@ -116,41 +118,11 @@ TARGET_ADD_ISO_MODE_HJR := true
 # Assert
 TARGET_OTA_ASSERT_DEVICE := jflte,jfltexx,i9505,GT-I9505,jgedlte,i9505g,GT-I9505G,jfltevzw,jfltespr,jflterefreshspr,jfltetmo,jfltecri,jfltecsp,jflteatt,jfltecan,jflteusc,jfltezm
 
+# Kernel
+TARGET_KERNEL_CONFIG         := jf_eur_defconfig
+
 # Releasetools
 TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 
 # exFat
 COMMON_GLOBAL_CFLAGS += -DEXFAT_KMOD
-
-# SELinux
-BOARD_SEPOLICY_DIRS += \
-        device/samsung/jflte/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-	file_contexts \
-	property_contexts \
-	te_macros \
-	bluetooth_loader.te \
-	bridge.te \
-	camera.te \
-	conn_init.te \
-	device.te \
-	dhcp.te \
-	domain.te \
-	drmserver.te \
-	file.te \
-	init.te \
-	kickstart.te \
-	mediaserver.te \
-	mpdecision.te \
-	netmgrd.te \
-	qmux.te \
-	rild.te \
-	rmt.te \
-	sensors.te \
-	surfaceflinger.te \
-	system.te \
-	tee.te \
-	thermald.te \
-	ueventd.te \
-	wpa_supplicant.te

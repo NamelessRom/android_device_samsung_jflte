@@ -112,7 +112,7 @@ on post-fs-data
     chmod 660 /sys/class/flash/flash/flash_power
 
     # Permissions for NCM
-    chmod 0664 /sys/class/android_usb/android0/terminal_version
+    chmod 0660 /sys/class/android_usb/android0/terminal_version
     chown system system /sys/class/android_usb/android0/terminal_version
 
     # SEC DVFS sysfs node
@@ -166,7 +166,7 @@ on post-fs-data
 
     # Auto Brightness
     chown system system  /sys/class/backlight/panel/auto_brightness
-    chmod 0664 /sys/class/backlight/panel/auto_brightness
+    chmod 0660 /sys/class/backlight/panel/auto_brightness
 
     # Ap thermister permission
     chown system radio /sys/bus/platform/devices/apq8064-tmu/curr_temp
@@ -342,21 +342,21 @@ on post-fs-data
     mkdir /data/misc/radio/hatp 0775 radio system
 
     # Vibetonz
-    chmod 0664 /dev/tspdrv
+    chmod 0660 /dev/tspdrv
     chown root shell /dev/tspdrv
-    chown system system /sys/class/timed_output/vibrator/pwm_value
-    chmod 0664 /sys/class/timed_output/vibrator/pwm_value
+	chown system system /sys/class/timed_output/vibrator/pwm_value
+	chmod 0660 /sys/class/timed_output/vibrator/pwm_value
     chown system system /sys/class/timed_output/vibrator/pwm_max
-    chmod 0664 /sys/class/timed_output/vibrator/pwm_max
-    chown system system /sys/class/timed_output/vibrator/pwm_min
-    chmod 0664 /sys/class/timed_output/vibrator/pwm_min
-    chown system system /sys/class/timed_output/vibrator/pwm_default
-    chmod 0664 /sys/class/timed_output/vibrator/pwm_default
-    chown system system /sys/class/timed_output/vibrator/pwm_threshold
-    chmod 0664 /sys/class/timed_output/vibrator/pwm_threshold
-
+	chmod 0660 /sys/class/timed_output/vibrator/pwm_max
+	chown system system /sys/class/timed_output/vibrator/pwm_min
+	chmod 0660 /sys/class/timed_output/vibrator/pwm_min
+	chown system system /sys/class/timed_output/vibrator/pwm_default
+	chmod 0660 /sys/class/timed_output/vibrator/pwm_default
+	chown system system /sys/class/timed_output/vibrator/pwm_threshold
+	chmod 0660 /sys/class/timed_output/vibrator/pwm_threshold
+    
     # Panel color temperature
-    chmod 0664 /sys/class/lcd/panel/panel_colors
+    chmod 0660 /sys/class/lcd/panel/panel_colors
     chown system system /sys/class/lcd/panel/panel_colors
 
 #start camera server as daemon
