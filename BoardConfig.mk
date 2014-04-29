@@ -36,6 +36,9 @@ TARGET_KERNEL_SELINUX_CONFIG := jfselinux_defconfig
 
 TARGET_BOOTLOADER_BOARD_NAME := MSM8960
 
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-cortex_a15-linux-gnueabihf-linaro_4.8.3
+TARGET_GCC_VERSION_AND := 4.8
+
 # WiFi module
 WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/dhd.ko"
 WIFI_DRIVER_MODULE_NAME := "dhd"
