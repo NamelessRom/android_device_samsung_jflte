@@ -193,10 +193,8 @@ on post-fs
     chown system radio /sys/block/mmcblk0/bkops_en
     chmod 0664 /sys/block/mmcblk0/bkops_en
 
-    # enable KSM (Kernel samepage mapping)
-    write /sys/kernel/mm/ksm/pages_to_scan 100
-    write /sys/kernel/mm/ksm/sleep_millisecs 500
-    write /sys/kernel/mm/ksm/run 1
+    # disable KSM
+    write /sys/kernel/mm/ksm/run 0
 
 # msm specific files that need to be created on /data
 on post-fs-data
