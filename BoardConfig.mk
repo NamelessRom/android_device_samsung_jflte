@@ -125,3 +125,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 
 # exFat
 COMMON_GLOBAL_CFLAGS += -DEXFAT_KMOD
+
+# Nameless Hardware
+BOARD_HARDWARE_NAMELESS_CLASS += device/samsung/jflte/nhw
