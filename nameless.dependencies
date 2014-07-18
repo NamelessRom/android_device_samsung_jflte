@@ -3,7 +3,7 @@
     "remote": "nameless",
     "repository": "android_kernel_samsung_jf",
     "target_path": "kernel/samsung/jf",
-    "revision": "android-4.4"
+    "revision": "android-4.4-next"
   },
   {
     "remote": "nameless",
