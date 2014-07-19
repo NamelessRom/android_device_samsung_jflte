@@ -79,6 +79,12 @@ on post-fs-data
     mkdir /dev/bus/ 755 root root
     mkdir /dev/bus/usb 755 root root
 
+    # mpdecision
+    mkdir /dev/socket/mpdecision 0770 system system
+    chmod 2770 /dev/socket/mpdecision
+
+    mkdir /data/system/time/ 0700 system system
+
     # wifi
     mkdir /efs/wifi 0775 system system
 
@@ -385,6 +391,7 @@ on property:qcom.thermal=thermal-engine
     start thermal-engine
 
 service mpdecision /system/bin/mpdecision --avg_comp
+    class main
     user root
     group root system
     disabled
