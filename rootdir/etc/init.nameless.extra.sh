@@ -32,3 +32,4 @@ echo "270000" > /sys/devices/system/cpu/cpu3/cpufreq/scaling_min_freq 300000
 ## MISC
 echo "1" > /dev/cpuctl/apps/cpu.notify_on_migrate
 stop mpdecision
+start thermald
