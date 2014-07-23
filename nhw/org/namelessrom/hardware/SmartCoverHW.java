@@ -38,7 +38,8 @@ public class SmartCoverHW {
     public static final int SW_MASK = 0x15;
     public static final int SW_BIT = 1 << SW_MASK;
 
-    public static final int LID_OPEN = 0;
+    public static final int LID_CLOSED = 0;
+    public static final int LID_OPEN = -1;
 
     /**
      * All HAF classes should export this boolean.
@@ -61,14 +62,14 @@ public class SmartCoverHW {
      * @return Wheter the lid is closed
      */
     public static boolean isLidClosed(final int state) {
-        return (state > LID_OPEN);
+        return (state == LID_CLOSED);
     }
 
     /**
      * @return Wheter the lid is open
      */
     public static boolean isLidOpen(final int state) {
-        return (state == LID_OPEN);
+        return (state != LID_CLOSED);
     }
 
     /**
