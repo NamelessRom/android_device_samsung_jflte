@@ -131,8 +131,5 @@ TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/jflte/releasetools
 # exFat
 COMMON_GLOBAL_CFLAGS += -DEXFAT_KMOD
 
-# Nameless Hardware
-BOARD_HARDWARE_NAMELESS_CLASS += device/samsung/jflte/nhw
-
-# Smartcover
-BOARD_HAS_FLIP_COVER_SENSOR := true
+# Smart Cover
+BOARD_HAS_EXTENDED_SWITCH := true
