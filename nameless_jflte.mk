@@ -25,12 +25,9 @@ $(call inherit-product, vendor/nameless/config/common.mk)
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/samsung/jflte/device.mk)
 
-# F2FS filesystem
+# Torch
 PRODUCT_PACKAGES += \
-    mkfs.f2fs \
-    fsck.f2fs \
-    fibmap.f2fs \
-    f2fstat
+    Torch
 
 # Discard inherited values and use our own instead.
 PRODUCT_NAME := nameless_jflte
